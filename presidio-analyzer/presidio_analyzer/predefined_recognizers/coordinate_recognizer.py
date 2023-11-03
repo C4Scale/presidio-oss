@@ -22,38 +22,41 @@ class InPanRecognizer(PatternRecognizer):
     """
 
     PATTERNS = [
+
         Pattern(
-            "Coordinate (degrees, decimal) (high)",
-            r"\b(-?(90(\.0+)?|[1-8]\d(\.\d+)?|\d(\.\d+)?)[°]?\s*[NnSs]?,\s*-?(180(\.0+)?|1[0-7]\d(\.\d+)?|\d{1,2}(\.\d+)?)[°]?\s*[EeWw])\b",
-            0.85,
+            "Latitude (degrees, decimal) (low)",
+            r"\b(-?(90(\.0+)?|[1-8]\d(\.\d+)?|\d(\.\d+)?)[°]?\s*[NnSs]|(?i)L(at)?|T)\b",
+            0.3,
         ),
 
         Pattern(
-            "Coordinate (degrees, decimal)  (middle)",
-            r"\b(-?\d{1,3}(\.\d+)?[°]?[NSns]?,\s*-?\d{1,3}(\.\d+)?[°]?[EWew])\b",
-            0.4,
+            "Longitude (degrees, decimal) (low)",
+            r"(-?(?:[0-8]\d|90)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[NSns]?)?))",
+            0.3,
         ),
 
         Pattern(
-            "Coordinate (DMS) (high)",
-            r"\b(-?(?:[0-8]\d|90)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[NSns]?)?)?,\s*(-?(?:1[0-7]\d|180)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[EWew]?)?)?)\b",
-            0.85,
+            "Latitude (degrees, DMS) (low)",
+            r"\b(-?(90(\.0+)?|[1-8]\d(\.\d+)?|\d(\.\d+)?)[°]?\s*[NnSs]|(?i)L(at)?|T)\b",
+            0.3,
         ),
-        Pattern(
-            "Coordinate (DMS) (low)",
-            r"\b(-?\d{1,3}(?:[°'\"]\d{1,2}(?:'\d{1,2}(\.\d+)?\"[NSns]?)?)?,\s*-?\d{1,3}(?:[°'\"]\d{1,2}(?:'\d{1,2}(\.\d+)?\"[EWew]?)?)?)\b",
-            0.4,
-        )
 
+        Pattern(
+            "Longitude (degrees, decimal) (low)",
+            r"(-?(?:1[0-7]\d|180)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[EWew]?)?))",,
+            0.3,
+        ),
 
     ]
 
     CONTEXT = [
-        "geographic coordinates",
         "coordinates",
-        "latitude and longitude",
+        "latitude",
+        "longitude",
         "GPS coordinates",
         "GPS",
+        "location",
+        "adress",
         "mapping coordinates",
         "geographical positions",
     ]
