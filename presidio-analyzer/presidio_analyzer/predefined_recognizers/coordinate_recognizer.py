@@ -30,20 +30,21 @@ class InPanRecognizer(PatternRecognizer):
         ),
 
         Pattern(
-            "Longitude (degrees, decimal) (low)",
-            r"(-?(?:[0-8]\d|90)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[NSns]?)?))",
-            0.3,
-        ),
-
-        Pattern(
-            "Latitude (degrees, DMS) (low)",
-            r"\b(-?(90(\.0+)?|[1-8]\d(\.\d+)?|\d(\.\d+)?)[°]?\s*[NnSs]|(?i)L(at)?|T)\b",
+            "Latitude (DMS) (low)",
+            r"\b(-?(?:[0-8]\d|90)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[NSns]?)?))\b",
             0.3,
         ),
 
         Pattern(
             "Longitude (degrees, decimal) (low)",
-            r"(-?(?:1[0-7]\d|180)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[EWew]?)?))",,
+            r"\b(-?(?:\d{1,2}(?:\.\d+)?|1[0-7]\d(?:\.\d+)?|180(?:\.0+)?)[°]?[EWew]?)\b",
+            0.3,
+        ),
+        
+
+        Pattern(
+            "Longitude (DMS) (low)",
+            r"\b(-?(?:\d{1,2}|1[0-7]\d|180)(?:[° ](?:[0-5]\d|[0-9])(?:'[0-5]\d(?:\.\d+)?\"[EWew]?)?))\b",
             0.3,
         ),
 
