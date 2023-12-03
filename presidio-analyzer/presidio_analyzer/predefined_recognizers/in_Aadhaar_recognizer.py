@@ -31,7 +31,7 @@ class InAadhaarRecognizer(PatternRecognizer):
         ),
 
         Pattern(
-            "Aadhaar (Medium)",
+            "Aadhaar (low)",
             r"\b[0-9]{12}\b",
             0.1,
         ),
