@@ -15,10 +15,10 @@ try:
     with open(os.path.join(parent_directory, "VERSION")) as version_file:
         __version__ = version_file.read().strip()
 except Exception:
-    __version__ = os.environ.get("C4Scale PRESIDIO_VERSION", "0.0.1-alpha")
+    __version__ = os.environ.get("C4Scale_PRESIDIO_VERSION", "0.0.1")
 
 setuptools.setup(
-    name="C4scale_presidio_analyzer",
+    name="c4scale_presidio_analyzer",
     version=__version__,
     description="C4Scale Presidio analyzer package",
     url="https://github.com/C4Scale/presidio-oss",
